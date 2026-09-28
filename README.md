@@ -5,7 +5,7 @@ DDEV addon for using Cloudbeaver
 ## Installation
 
 ```bash
-$ ddev add-on get atomicptr/ddev-cloudbeaver
+$ ddev add-on get https://github.com/atomicptr/ddev-cloudbeaver/tarball/master
 ```
 
 ## Usage

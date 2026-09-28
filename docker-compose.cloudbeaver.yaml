@@ -1,0 +1,32 @@
+#ddev-generated
+services:
+  cloudbeaver:
+    container_name: ddev-${DDEV_SITENAME}-cloudbeaver
+    image: ${CLOUDBEAVER_DOCKER_IMAGE:-dbeaver/cloudbeaver:latest}
+    hostname: ${DDEV_SITENAME}-cloudbeaver
+    user: root
+    environment:
+      VIRTUAL_HOST: "${DDEV_HOSTNAME}"
+      HTTP_EXPOSE: "8978:8978"
+      HTTPS_EXPOSE: "8979:8978"
+      DDEV_DATABASE: "${DDEV_DATABASE}"
+      DDEV_SITENAME: "${DDEV_SITENAME}"
+      CB_SERVER_NAME: "${DDEV_SITENAME}"
+      CB_SERVER_URL: "https://${DDEV_HOSTNAME}:8979"
+      CB_ADMIN_NAME: db
+      CB_ADMIN_PASSWORD: db
+      CLOUDBEAVER_APP_ADMIN_CREDENTIALS_SAVE_ENABLED: true
+      CLOUDBEAVER_APP_ANONYMOUS_ACCESS_ENABLED: true
+      CLOUDBEAVER_APP_DEFAULT_USER_TEAM: "user"
+      CLOUDBEAVER_APP_GRANT_CONNECTIONS_ACCESS_TO_ANONYMOUS_TEAM: true
+      CLOUDBEAVER_APP_PUBLIC_CREDENTIALS_SAVE_ENABLED: true
+      CLOUDBEAVER_APP_READ_ONLY_CONNECTION_INFO: true
+      CLOUDBEAVER_APP_RESOURCE_MANAGER_ENABLED: false
+      CLOUDBEAVER_APP_SUPPORTS_CUSTOM_CONNECTIONS: false
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: ${DDEV_APPROOT}
+    volumes:
+      - ./cloudbeaver/entrypoint.sh:/entrypoint.sh:ro
+      - ./cloudbeaver/initial-data.conf:/opt/cloudbeaver/conf/initial-data.conf:ro
+    entrypoint: ["/usr/bin/env", "bash", "/entrypoint.sh"]

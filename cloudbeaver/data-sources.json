@@ -1,0 +1,23 @@
+{
+    "folders": {},
+    "connections": {
+        "ddev": {
+            "provider": "mysql",
+            "driver": "mysql8",
+            "name": "DDEV",
+            "save-password": true,
+            "configuration": {
+                "host": "db",
+                "port": "3306",
+                "database": "db",
+                "url": "jdbc:mysql://db:3306/db",
+                "configurationType": "MANUAL",
+                "auth-model": "native",
+                "auth-properties": {
+                    "user": "db",
+                    "password": "db"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+name: cloudbeaver
+
+project_files:
+  - docker-compose.cloudbeaver.yaml
+  - commands/host/cloudbeaver
+  - cloudbeaver/entrypoint.sh
+  - cloudbeaver/initial-data.conf
+
+post_install_actions:
+  - ddev restart
